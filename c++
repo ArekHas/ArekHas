@@ -45,8 +45,10 @@ int main() {
     d.Parse<0>(json);
 
     printf("%s\n", d["hello"].GetString());    // String 
-    printf("%g\n", d["pi"].GetDouble());      // Double
+    printf("%g\n", d["pi"].GetDouble());       // Double
+    printf("%d\n", d["i"].GetInt());                // Intiger
+    printf("%s\n", d["t"].GetBool());             // Boolean
 
-    return 0;
+    return 0;   
 }
 ~
