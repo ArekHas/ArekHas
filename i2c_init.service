@@ -1,0 +1,11 @@
+[Unit]
+Description=Initialisieren der I2C Teilnehmer
+DefaultDependencies=no
+After=basic.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c 'echo bme280 0x76 > /sys/bus/i2c/devices/i2c-1/new_device'
+
+[Install]
+WantedBy=multi-user.target
