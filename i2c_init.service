@@ -9,3 +9,13 @@ ExecStart=/usr/bin/bash -c 'echo bme280 0x76 > /sys/bus/i2c/devices/i2c-1/new_de
 
 [Install]
 WantedBy=multi-user.target
+
+####################################################################
+## Service Unit aktivieren
+## Jetzt muss die Service Unit noch aktiviert werden
+##   sudo systemctl enable wsgiserver.service 
+## 
+## Anschließend kann die Unit gestartet werden:
+##   sudo systemctl start wsgiserver.service 
+##
+####################################################################
