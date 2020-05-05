@@ -5,7 +5,7 @@ After=basic.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/bash -c 'echo bme280 0x76 > /sys/bus/i2c/devices/i2c-1/new_device'
+ExecStart=/bin/bash -c 'echo bme280 0x76 > /sys/bus/i2c/devices/i2c-1/new_device'
 
 [Install]
 WantedBy=multi-user.target
@@ -13,9 +13,9 @@ WantedBy=multi-user.target
 ####################################################################
 ## Service Unit aktivieren
 ## Jetzt muss die Service Unit noch aktiviert werden
-##   sudo systemctl enable wsgiserver.service 
+##   sudo systemctl enable i2c_init.service 
 ## 
 ## Anschließend kann die Unit gestartet werden:
-##   sudo systemctl start wsgiserver.service 
+##   sudo systemctl start i2c_init.service 
 ##
 ####################################################################
