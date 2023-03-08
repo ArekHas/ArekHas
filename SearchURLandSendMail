@@ -1,0 +1,44 @@
+import requests
+import smtplib
+
+# URL der Webseite, die durchsucht werden soll
+url = "https://www.example.com/"
+
+# Das Wort, nach dem gesucht werden soll
+search_word = "example"
+
+# Die E-Mail-Adresse, an die die Benachrichtigung gesendet werden soll
+recipient_email = "recipient@example.com"
+
+# Funktion, um eine E-Mail zu senden
+def send_email():
+    # E-Mail-Kontodaten
+    smtp_server = "smtp.example.com"
+    smtp_port = 587
+    smtp_username = "your_username"
+    smtp_password = "your_password"
+    sender_email = "sender@example.com"
+
+    # Verbindung zum SMTP-Server herstellen
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    server.starttls()
+    server.login(smtp_username, smtp_password)
+
+    # E-Mail-Inhalt
+    subject = "Word found on webpage"
+    body = f"The word '{search_word}' was found on {url}"
+    message = f"Subject: {subject}\n\n{body}"
+
+    # E-Mail senden
+    server.sendmail(sender_email, recipient_email, message)
+    server.quit()
+
+# Webseite herunterladen
+response = requests.get(url)
+
+# Überprüfen, ob das Wort gefunden wurde
+if search_word in response.text:
+    send_email()
+    print("Word found. Email sent.")
+else:
+    print("Word not found.")
